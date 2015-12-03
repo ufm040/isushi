@@ -1,5 +1,6 @@
 <?php
 
+<<<<<<< HEAD
 $error = '';  // pour le message d'erreur à afficher.
 
 if ( $_POST ) {   // on vérifie qu'il y a bien quelque chose de posté. (Empêche l'affichage dès le 1er affichage de la page d'un message d'erreur)
@@ -10,10 +11,23 @@ if ( $_POST ) {   // on vérifie qu'il y a bien quelque chose de posté. (Empêc
 
 			$pdo = include('conf/pdo.php');
 			$statement = $pdo->prepare('SELECT * FROM users WHERE email = :email AND password = :password;');
+=======
+$error = '';
+
+if ( $_POST ) {
+
+	if ( !empty($_POST['action']['connexion']) ) {
+		
+		if ( !empty($_POST['auth']['email']) && !empty($_POST['auth']['password']) ) {
+
+			$pdo = include('data/pdo.php');
+			$statement = $pdo->prepare('SELECT * FROM clients WHERE email = :email AND password = :password;');
+>>>>>>> refs/remotes/origin/phil_test
 			$statement->execute([
 				':email' => $_POST['auth']['email'],
 				':password' => $_POST['auth']['password'],
 			]);
+<<<<<<< HEAD
 			$users = $statement->fetchAll();  // retourne soit rien, soit 1 ligne (cf notre configuration de la base de données)
 			if ( count($users) ) {  // on vérifie qu'il y a quelque chose dans $users. (Dans notre configuration : soit 0, soit 1)
 				
@@ -24,6 +38,16 @@ if ( $_POST ) {   // on vérifie qu'il y a bien quelque chose de posté. (Empêc
 																													// car ici, dès la page de connexion, (même sans être connecté), les liens du menu sont valides
 																													// l'utilisateur ne pourra accéder réellement au contenu des pages que s'il est connecté
 																													// si jamais il clique sur un lien sans être connecté, renvoie à la page de connexion
+=======
+			$users = $statement->fetchAll();
+			if ( count($users) ) {
+				
+				session_start();
+				$_SESSION['auth'] = $users[0];
+				//die(header('Location: index.html'));
+				die(header('Location: ./' . ( !empty($_POST['action']['next']) ? $_POST['action']['next'] : '' ) ));
+				// die("vous êtes connecté");
+>>>>>>> refs/remotes/origin/phil_test
 
 			} else $error = "Email ou mot de passe erroné.";
 
@@ -33,23 +57,41 @@ if ( $_POST ) {   // on vérifie qu'il y a bien quelque chose de posté. (Empêc
 
 }
 
+<<<<<<< HEAD
 ?><html>
 <head>
 </head>
 <body>
 	<form action="connexion.php" method="post">
+=======
+
+?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<title>connexion</title>
+</head>
+<body>
+	<form id="form-login" action="connexion.php" method="post">
+>>>>>>> refs/remotes/origin/phil_test
 		
 		<?php if ( $error ) { ?>
 		<h2 style="color: red;"><?=$error?></h2>
 		<?php } ?>
 		<fieldset>
+<<<<<<< HEAD
 			<!-- Nouvelles construction des input : sous forme de tableau -> meilleure lisibilité, mieux structurée --> 
 			<!-- pour le tableau inclus dans 'auth' concerne uniquement les champs des données utilisateur -->
+=======
+			<h2>Login client</h2>
+>>>>>>> refs/remotes/origin/phil_test
 			<input
 				type="text"
 				placeholder="email"
 				name="auth[email]"
 				value="<?=!empty($_POST['auth']['email']) ? $_POST['auth']['email'] : ''?>"
+<<<<<<< HEAD
 			/>		<!-- l'expression ternaire permet de concerver le mail s'il est ok (mais que le mot de passe ne l'est pas) OU de se vider --> 
 
 			<br />
@@ -69,3 +111,29 @@ if ( $_POST ) {   // on vérifie qu'il y a bien quelque chose de posté. (Empêc
 
 	</form>
 </body>
+=======
+			/>
+
+			<br />
+			<input type="password" placeholder="password" name="auth[password]" />
+
+			<input
+				type="hidden"
+				name="action[next]"
+				value="<?=!empty($_GET['next']) ? $_GET['next'] : ( !empty($_POST['action']['next']) ? $_POST['action']['next'] : '' )?>"
+			/>
+
+			<br />
+			<input type="submit" name="action[connexion]" value="connexion" />
+			<br />
+			<a href="password.php">Mot de passe oublié</a>
+
+		</fieldset>
+		
+	</form>
+
+	<?php include("inscription.php");?>
+
+</body>
+</html>
+>>>>>>> refs/remotes/origin/phil_test
