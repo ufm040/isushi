@@ -102,6 +102,10 @@ h2{
 	margin:2% auto;
 	width: 22%;
 }
+
+#menu-choice{
+	display: none;
+}
 /* page footer */
 .page-footer {
 	background-color: #282828;
@@ -155,6 +159,9 @@ h2{
 	}
 	#tease p{
     	font-size: 1.5em;
+	}
+	#menu-choice{
+		display: block;
 	}
 
 }
