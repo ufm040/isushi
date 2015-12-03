@@ -82,6 +82,10 @@ header h1 {
 h2{
 	font-size: 2em;
 }
+#userhello {
+	float: right;
+	font-size: 0.6em;
+}
 
 #tease {
     width: 100%;
@@ -110,7 +114,7 @@ h2{
 	/* Changement de header/menu */
 
 	.container{
-		background-color:#111223;
+		background-color:#E7490F;
 	}
 	header h1 {
 		float: left;

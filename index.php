@@ -4,10 +4,14 @@ session_start();
 if (isset($_SESSION['auth'])) {
 	$connect = "Déconnexion";
 	$connectPage = "deconnexion.php";
+	$nameUser = $_SESSION['auth']['firstname'];
 } else {
 	$connect = "Connexion";
 	$connectPage = "connexion.php";
 }
+echo "<pre>";
+//var_dump($_SESSION);
+echo "</pre>" ;
 ?>
 
 
@@ -31,7 +35,7 @@ if (isset($_SESSION['auth'])) {
 		<header class="page-header clearfix">
 
 			<h1>
-				<a href="index.html" title="Back to home">iSuShi</a>
+				<a href="index.php" title="Back to home">iSuShi</a>
 			</h1>
 
 			<nav class="isushi-nav" id="large-menu">
@@ -53,7 +57,8 @@ if (isset($_SESSION['auth'])) {
 
 		<section class="products">
 			<article>
-				<h2>Les meilleurs Sushi de Paris !</h2>
+				<h2>Les meilleurs Sushi de Paris !<span id="userhello"><?= !empty($nameUser) ? 'Bonjour '. $nameUser  : ''?></span></h2>
+				 
 				<div id="tease" class="clearfix">
 					<img src="img/img-accueil.png" alt="Les meilleurs sushi de Paris">				
 					<p>Chez vous en moins d'une demi-heure, déguster les meilleurs sushi de Paris, fabriqués des maîtres sushi d'exception</p>
