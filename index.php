@@ -59,16 +59,6 @@ echo "</pre>" ;
 
 	</div>	
 	<!-- pied de page du site -->
-	<footer class="page-footer">
-			<h2>iSuShi</h2>
-			<address>
-				13 Rue des Écluses Saint-Martin<br />
-				75010, Paris<br />
-				0 805 62 23 45
-			</address>
-	</footer>
-
-	<script src="js/jquery.min.js"></script>
-	<script src="js/main.js"></script>
+	<?php include('includes/footer.html') ; ?>
 </body>
 </html>
