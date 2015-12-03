@@ -1,6 +1,5 @@
-
- <?php 
-try {
+ <?php
+ try {
 	$pdo = include('data/pdo.php');
 
 } catch (Exception $e) {
@@ -10,9 +9,9 @@ try {
 
 }
 		
-		$getimage = $pdo->query('SELECT image, name, description, price  FROM produits');
-		$donnees = $getimage->fetchall();
- 		
+$getimage = $pdo->query('SELECT image, name, description, price  FROM produits');
+$donnees = $getimage->fetchall();
+	
 
 		foreach ($donnees as $key => $value) {
 			?>
@@ -24,14 +23,5 @@ try {
 			<p><?php echo $donnees [$key]['description'];?></p>
 			<p><?php echo $donnees [$key]['price'] . "€";?></p>
 			</div>
-			
-
-
-
-			<?php
-		}	
 		
-		
-
-	
 ?>
