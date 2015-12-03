@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.0.2
+-- version 4.5.2
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 03 Décembre 2015 à 13:59
--- Version du serveur :  10.0.17-MariaDB
--- Version de PHP :  5.6.14
+-- Généré le :  Jeu 03 Décembre 2015 à 14:30
+-- Version du serveur :  5.6.17
+-- Version de PHP :  5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -56,8 +56,9 @@ CREATE TABLE `commandes` (
   `id` int(10) UNSIGNED NOT NULL,
   `id_client` int(10) UNSIGNED NOT NULL,
   `id_produit` int(10) UNSIGNED NOT NULL,
+  `quantity` int(10) UNSIGNED NOT NULL,
+  `total` int(10) UNSIGNED NOT NULL,
   `id_magasin` int(10) UNSIGNED NOT NULL,
-  `Total` int(7) UNSIGNED NOT NULL,
   `created` datetime NOT NULL,
   `statut` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
