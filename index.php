@@ -32,28 +32,7 @@ echo "</pre>" ;
 	<div class="container">
 
 		<!-- page header -->
-		<header class="page-header clearfix">
-
-			<h1>
-				<a href="index.php" title="Back to home">iSuShi</a>
-			</h1>
-
-			<nav class="isushi-nav" id="large-menu">
-				<ul>
-					<li><a href="#" title="carte">carte</a></li>
-					<li><a href="#" title="compte">compte client</a></li>
-					<li><a href="#" title="contact">contact</a></li>
-				</ul>
-			</nav>
-
-			<nav class="isushi-nav" id="fix-menu">
-				<ul>
-					<li><a href="#" title="panier"><i class="fa fa-cart-plus fa-2x"></i></a></li>
-					<li><a href="<?=$connectPage?>" title=""><?=$connect?></a></li>
-				</ul>
-			</nav>
-
-		</header>
+		<?php include('includes/header.html') ; ?>
 
 		<section class="products">
 			<article>
