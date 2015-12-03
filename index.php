@@ -12,7 +12,7 @@
 	</article>
 </section>
 <section id="menu-choice">
-	<?php include('menu-choice.php'); ?>
+	<?php include('product.php'); ?>
 </section>
 <section class="products" id="nav-bottom">
 	<nav>
