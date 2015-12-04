@@ -48,6 +48,16 @@ header h1 {
 	display: block;
 	margin-right: 10px;
 }
+#fix-menu sup{
+    background-color: #E7490F;
+    border-radius: 50%;
+    bottom: 23px;
+    color: #fff;
+    font-size: 0.3em;
+    left: -5px;
+    padding: 3px 6px;
+    position: relative;
+}
 
 .isushi-nav a {
 	display: block;

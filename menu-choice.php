@@ -24,4 +24,7 @@ $donnees = $getimage->fetchall();
 			<p><?php echo $donnees [$key]['price'] . "€";?></p>
 			</div>
 		
+	<?php
+}	
+		
 ?>
