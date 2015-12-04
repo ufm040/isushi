@@ -46,7 +46,7 @@ echo "</pre>" ;
 
 			<nav class="isushi-nav" id="fix-menu">
 				<ul>
-					<li><a href="panier.php" title="panier"><i class="fa fa-cart-plus fa-2x"><sup></sup></i></a></li>
+					<li><a href="#" title="panier"><i class="fa fa-cart-plus fa-2x"></i></a></li>
 					<li><a href="<?=$connectPage?>" title=""><?=$connect?></a></li>
 				</ul>
 			</nav>

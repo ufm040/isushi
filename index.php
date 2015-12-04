@@ -30,3 +30,4 @@
 
 <!-- pied de page du site -->
 <?php include('includes/footer.html') ; ?>
+

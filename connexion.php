@@ -4,6 +4,8 @@ $error = '';
 
 if ( $_POST ) {
 
+if (empty($_POST['action']['registred'])) { // test en premier si le bouton "inscription" n'a pas été cliqué
+
 	if ( !empty($_POST['action']['connexion']) ) {
 		
 		if ( !empty($_POST['auth']['email']) && !empty($_POST['auth']['password']) ) {
@@ -19,9 +21,7 @@ if ( $_POST ) {
 				
 				session_start();
 				$_SESSION['auth'] = $users[0];
-				//die(header('Location: index.html'));
 				die(header('Location: ./' . ( !empty($_POST['action']['next']) ? $_POST['action']['next'] : '' ) ));
-				// die("vous êtes connecté");
 
 			} else $error = "Email ou mot de passe erroné.";
 
@@ -29,6 +29,7 @@ if ( $_POST ) {
 
 	} else $error = "Le formulaire n'a pas été correctement validé.";
 
+}
 }
 
 
@@ -38,8 +39,16 @@ if ( $_POST ) {
 <head>
 	<meta charset="UTF-8">
 	<title>connexion</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/style_phil.css">
 </head>
 <body>
+
+<?php include("includes/header.php"); ?>
+<div class="products container">
+	
+
 	<form id="form-login" action="connexion.php" method="post">
 		
 		<?php if ( $error ) { ?>
@@ -73,6 +82,9 @@ if ( $_POST ) {
 	</form>
 
 	<?php include("inscription.php");?>
+</div>
+	<?php include("includes/footer.html");?>
 
 </body>
+
 </html>
