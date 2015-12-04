@@ -15,7 +15,7 @@ $donnees = $getimage->fetchall();
 
 foreach ($donnees as $key => $value) {
 	?>
-	<div class="menu-mosaic" id="product-<?=$donnees[$key]['id']; ?>">
+	<div class="menu-mosaic">
 		<span class="imgSize">
 			<img src="<?php echo $donnees[$key]['image'];?>" class="adapt-image"/>
 		</span>
@@ -25,7 +25,7 @@ foreach ($donnees as $key => $value) {
     			<input type='text' name='quantity' value='0' class='qty' />
     			<input type='button' value='+' class='qtyplus' field='quantity' />
 			</form>
-			<button type="submit" value="text" class="basketAdd">acheter !</button>
+			<button id="product-<?=$donnees[$key]['id']; ?>" type="submit" value="text" class="basketAdd">acheter !</button>
 		
 		</div>
 		<div class="menuText">
