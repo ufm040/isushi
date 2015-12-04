@@ -122,9 +122,8 @@ h2{
 }
 
 
-#menu-mosaic{
+.menu-mosaic{
 	width:320px;
-	
 	display:inline-block;
 	float:left;
 	position:relative;
@@ -135,27 +134,27 @@ img.adapt-image{
 	width: 100%;
 }
 
-#selection {
+.selection {
 	float:right;
 	width :40%;
 
 }
 
-#menuText {
+.menuText {
 	float:left;
 	width: 59%;
 	height:62px;
 	text-align: center;
 
 }
-#basketAdd{
+.basketAdd{
 	float:right;
 	width: 70%;
 	margin-right: 20px;
 }
 
 
-#basketAdd, {
+.basketAdd, {
 	border-radius:12px 0 12px 0;
 	background: #f5f5f5;
 	border:none;
@@ -166,19 +165,19 @@ img.adapt-image{
 }
 
 
-#menu-text,h3,p{
+.menu-text,h3,p{
 	color: white;
 }
 
-#menu-text,p{
+.menu-text,p{
 	font-size: italic;
 }
 
-#basketAdd:hover{
+.basketAdd:hover{
 	background-color: #b88884;
 }
 
-#myform {
+.myform {
     text-align: center;
     padding: 5px;
     border: 1px dotted #ccc;
@@ -251,8 +250,6 @@ input.qtyminus { width:25px; height:25px;}
 	#menu-choice{
 		display: block;
 	}
-<<<<<<< HEAD:css/style.css
-=======
 
 	#menu-choice::after{
 	display: block;
@@ -266,7 +263,7 @@ input.qtyminus { width:25px; height:25px;}
 		clear: both;
 	}
 
-	#menu-mosaic{
+	.menu-mosaic{
 	width:25%;
 	display:inline-block;
 	float:left;
@@ -274,10 +271,7 @@ input.qtyminus { width:25px; height:25px;}
 	background-color: #985629;
 	}
 
-	#basketAdd{
+	.basketAdd{
 		cursor: pointer;
 	}
-
-
->>>>>>> refs/remotes/origin/arthur_test:css/style-arthur.css
 }

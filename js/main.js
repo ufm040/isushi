@@ -24,7 +24,10 @@ init();
 
 function addBasket(e){
 	e.preventDefault();
+	console.log("Coucou");
+	console.log(this);
 	$product = this.dataset.product;
+
 	$elem = $("#product-"+$product);
 	$qty = $elem.children("#qty").val();
 	$price = $elem.children("#price").val();
@@ -49,5 +52,5 @@ function addBasket(e){
 
 
 
-$(".one-product button").on("click", addBasket);
+$(".basketAdd").on("click", addBasket);
 
