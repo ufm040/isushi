@@ -19,7 +19,7 @@ echo "</pre>" ;
 <html lang="fr">
 <head>
 	<meta charset="UTF-8">
-	<title>iSushi.fr!</title>
+	<title>iSushi.fr Cath!</title>
 
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:300">
@@ -46,7 +46,7 @@ echo "</pre>" ;
 
 			<nav class="isushi-nav" id="fix-menu">
 				<ul>
-					<li><a href="#" title="panier"><i class="fa fa-cart-plus fa-2x"></i></a></li>
+					<li><a href="panier.php" title="panier"><i class="fa fa-cart-plus fa-2x"><sup></sup></i></a></li>
 					<li><a href="<?=$connectPage?>" title=""><?=$connect?></a></li>
 				</ul>
 			</nav>
