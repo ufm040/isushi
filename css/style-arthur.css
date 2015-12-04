@@ -77,6 +77,7 @@ header h1 {
 .products {
 	color: #fff;
 	padding: 20px;
+	position:relative;
 }
 
 h2{
@@ -103,9 +104,86 @@ h2{
 	width: 22%;
 }
 
+/*nourriture*/
+
 #menu-choice{
 	display: none;
+	width: 100%;
 }
+
+
+#menu-mosaic{
+	width:320px;
+	
+	display:inline-block;
+	float:left;
+	position:relative;
+	background-color: #985629;
+}
+
+img.adapt-image{
+	width: 100%;
+}
+
+#selection {
+	float:right;
+	width :40%;
+
+}
+
+#menuText {
+	float:left;
+	width: 59%;
+	height:62px;
+	text-align: center;
+
+}
+#basketAdd{
+	float:right;
+	width: 70%;
+	margin-right: 20px;
+}
+
+
+#basketAdd, {
+	border-radius:12px 0 12px 0;
+	background: #f5f5f5;
+	border:none;
+	color:#555;
+	font:bold 12px Verdana;
+	padding:6px 0 6px 0;
+	box-shadow:1px 1px 3px #999;
+}
+
+
+#menu-text,h3,p{
+	color: white;
+}
+
+#menu-text,p{
+	font-size: italic;
+}
+
+#basketAdd:hover{
+	background-color: #b88884;
+}
+
+#myform {
+    text-align: center;
+    padding: 5px;
+    border: 1px dotted #ccc;
+    margin: 2%;
+}
+.qty {
+    width: 40px;
+    height: 25px;
+    text-align: center;
+}
+input.qtyplus { width:25px; height:25px;}
+input.qtyminus { width:25px; height:25px;}
+
+
+
 /* page footer */
 .page-footer {
 	background-color: #282828;
@@ -163,5 +241,30 @@ h2{
 	#menu-choice{
 		display: block;
 	}
+
+	#menu-choice::after{
+	display: block;
+	content: "";
+	clear:both;
+	}
+
+	#fullcarte::after{
+		display: block;
+		content: "";
+		clear: both;
+	}
+
+	#menu-mosaic{
+	width:25%;
+	display:inline-block;
+	float:left;
+	position:relative;
+	background-color: #985629;
+	}
+
+	#basketAdd{
+		cursor: pointer;
+	}
+
 
 }
