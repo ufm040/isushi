@@ -19,7 +19,7 @@ echo "</pre>" ;
 <html lang="fr">
 <head>
 	<meta charset="UTF-8">
-	<title>iSushi.fr!</title>
+	<title>iSushi.fr Cath!</title>
 
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:300">
