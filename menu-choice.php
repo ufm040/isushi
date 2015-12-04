@@ -9,13 +9,13 @@
 
 }
 		
-$getimage = $pdo->query('SELECT image, name, description, price  FROM produits Order By name');
+$getimage = $pdo->query('SELECT id, image, name, description, price  FROM produits Order By name');
 $donnees = $getimage->fetchall();
 	
 
 foreach ($donnees as $key => $value) {
 	?>
-	<div class="menu-mosaic">
+	<div class="menu-mosaic" id="product-<?=$donnees[$key]['id']; ?>">
 		<span class="imgSize">
 			<img src="<?php echo $donnees[$key]['image'];?>" class="adapt-image"/>
 		</span>
