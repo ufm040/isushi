@@ -39,9 +39,15 @@ try {
 
 }
 		
+<<<<<<< HEAD
 		$getimage = $pdo->query('SELECT image, name, description, price  FROM produits');
 		$donnees = $getimage->fetchall();
  		
+=======
+$getimage = $pdo->query('SELECT image, name, description, price  FROM produits');
+$donnees = $getimage->fetchall();
+	
+>>>>>>> refs/remotes/origin/catherine_test
 
 		foreach ($donnees as $key => $value) {
 			?>
@@ -53,12 +59,18 @@ try {
 			<p><?php echo $donnees [$key]['description'];?></p>
 			<p><?php echo $donnees [$key]['price'] . "€";?></p>
 			</div>
+<<<<<<< HEAD
 			
 
 
 
 			<?php
 		}	
+=======
+		
+	<?php
+}	
+>>>>>>> refs/remotes/origin/catherine_test
 		
 		
 
