@@ -11,7 +11,7 @@ if (isset($_SESSION['auth'])) {
 
 
 include('includes/header.php') ;  
-include('menu-choice.php');	
+include('product.php');	
 		
 include('includes/footer.html') ; 	
 ?>
