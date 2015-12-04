@@ -36,7 +36,7 @@ var_dump($_SESSION);
 		<?php			
 	} else {
 		?>
-		<input type="submit" value="Commander" ></input>
+		<input id="commande" type="submit" value="Commander" ></input>
 		<?php
 	}
 ?>
