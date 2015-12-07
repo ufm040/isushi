@@ -54,7 +54,7 @@ if (empty($_POST['action']['connexion'])) { // test en premier si le bouton "con
 	
 			// if ( count($users) ) {
 				
-				session_start();
+				//session_start();
 				$_SESSION['auth'] = $users[0];
 				die(header('Location: ./' . ( !empty($_POST['action']['next']) ? $_POST['action']['next'] : '' ) ));
 
