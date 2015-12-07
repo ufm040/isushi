@@ -20,41 +20,44 @@ function addCommande(e){
 
 $("#commande").on("click", addCommande);
 
-function updateValue($elem,$qty) {
-	$elem.attr("value",$qty);
-	$priceUnit = $elem.parent('li').prev().children(".price").html();
+function updateValue($this,$ope) {
+	if ($ope) {
+		console.log("moins");
+		$elem = $this.next('.qty');
+		$qty =  parseInt($elem.val()) - 1;
+	} else {
+		console.log("plus");
+		$elem = $this.prev('.qty');
+		$qty =  parseInt($elem.val()) + 1;
+	}
+
+	$elem.attr('value',$qty);
+
+	$priceUnit = $this.parent('li').prev().children(".price").html();
 	$total = $qty * $priceUnit;
-	$elem.parent('li').next().children(".totalprice").html($total);
+
+	$this.parent('li').next().children(".totalprice").html($total);
+
 	$totalpanier = $('#totalpanier').children().children().html();
-	$totalpanier = parseInt($totalpanier)+parseInt($priceUnit);
-	$('#totalpanier').children().children().html($totalpanier);	
-}
+
+	if ($ope) {
+		$totalpanier = parseInt($totalpanier)-parseInt($priceUnit);
+	} else {
+		$totalpanier = parseInt($totalpanier)+parseInt($priceUnit);	
+	} 
+
+	$('#totalpanier').children().children().html($totalpanier);		
+} 
 
 
 function subArticle(e){
 	e.preventDefault();
-	$elem = $(this).next('.qty');
-	$qty =  parseInt($elem.val()) - 1;
 	updateValue($(this),1);
 }
 
 function addArticle(e){
 	e.preventDefault();
-	updateValue($(this),0);
-	$elem = $(this).prev('.qty');
-	$qty =  parseInt($elem.val()) + 1;
-
-	$elem.attr("value",$qty);
-	$t = $(this).parent('li').prev().children(".price").html();
-
-	$total = $qty * $t;
-	$(this).parent('li').next().children(".totalprice").html($total);
-	
-	$totalpanier = $('#totalpanier').children().children().html();
-	$totalpanier = parseInt($totalpanier)+parseInt($t);
-
-	$('#totalpanier').children().children().html($totalpanier);
-		
+	updateValue($(this),0);		
 }
 
 
