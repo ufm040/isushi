@@ -10,12 +10,14 @@ var_dump($_SESSION);
 
 <h1> Votre Panier</h1>
 <?php 
+	$totalPanier = 0;
 	foreach ($_SESSION['basket'] as $key => $value) {
 		$productQuery = $pdo->prepare('SELECT image, name, description, price  FROM produits WHERE id = :productid ');
 		$productQuery->execute([
 			':productid' => $value['product']
 		]);
 		$product = $productQuery->fetchAll();
+		$totalPanier += $value['qty'] *  $product[0]['price'] ; 		
 		if ( $product) {
 			?>
 			<div class="one-product" id="product-<?=$product[0]['id']; ?>">
@@ -26,10 +28,14 @@ var_dump($_SESSION);
 				<p><?= $value['qty'];?></p>
 				<p><?= $value['qty'] *  $product[0]['price'] ." €";?></p>
 			</div>	
-			<?php
+			<?php	
 		}
 	}
-
+	?>
+		<div id="totalpannier">
+			<p> Total du Pannier : <?= $totalPanier ." €";?></p> 
+		</div>
+	<?php 
 	if (!isset($_SESSION['auth'])) {
 		?>
 		<a href="connexion.php" title="Se connectere">Connexion</a>
