@@ -29,6 +29,8 @@ function addBasket(e){
 	$elem = $(this).prev(".myform").children(".qty");
 	$qty = $elem.val();
 	//$price = $elem.children("#price").val();
+	console.log($qty);
+	console.log($product);
 	$.ajax({
 		"url": "libs/addproduct.php",
 		"type": "POST",
