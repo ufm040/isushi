@@ -27,8 +27,8 @@ if ( $_POST ) {
 			
 			if ($allFields) {
 
-				// if ( preg_match ( " /^[^\W][a-zA-Z0-9_-]+(\.[a-zA-Z0-9_]+)*\@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)*\.[a-zA-Z]{2,4}$/ " , $_POST['new_client']['email'] ) ){
-				// die("L'adresse eMail est valide");
+				if ( preg_match ( " /^[a-zA-Z0-9._+-]+@[a-z0-9-]{1,67}\.[a-z]{2,67}$/ " , $_POST['new_client']['email'] ) ){
+					// die("L'adresse eMail est valide");
 				
 				if ( $_POST['new_client']['password'] === $_POST['new_client']['password_conf'] ) {
 
@@ -61,6 +61,8 @@ if ( $_POST ) {
 				} else $error = "Les mots de passes ne sont pas identiques.";
 
 				// } else $error = "Email ou mot de passe erroné.";
+			}
+			// } else die("Mail non valide");
 			// } else die("le mail n'est pas valide");
 			} else $error = "Tous les champs doivent être remplis.";
 
@@ -83,9 +85,12 @@ if ( $_POST ) {
 
 <body>
 	<div class="wrapper style-form ">
-		<h2>Nouveau client</h2>
+		<span class="title-new-client">
+		<h2><a href="#">Nouveau client</a></h2>
 		<h3>Remplissez le formulaire d'inscritpion :</h3>
 		<br />
+		</span>
+	<div class="cache-form">
 		<P>* : champs obligatoires</P>
 		<br />
 
@@ -207,10 +212,12 @@ if ( $_POST ) {
 			<input type="submit" name="action[registred]" value="inscription" />
 
 		</form>
+	</div>  <!-- FIN div cache-form -->
 	</div>  <!-- FIN div wrapper -->
 
 	<script src="js/jquery.min.js"></script>
 	<script src="js/main.js"></script>
+	<script src="js/main_phil.js"></script>
 	<!--<script src="js/main_phil.js"></script> -->
 </body>
 </html>

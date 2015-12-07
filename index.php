@@ -11,7 +11,7 @@
 		</div>
 	</article>
 </section>
-<section id="menu-choice">
+<section id="menu-choice" class="clearfix">
 	<?php include('menu-choice.php'); ?>
 </section>
 <section class="products" id="nav-bottom">
@@ -30,3 +30,4 @@
 
 <!-- pied de page du site -->
 <?php include('includes/footer.html') ; ?>
+
