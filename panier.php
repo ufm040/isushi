@@ -5,40 +5,55 @@
 } catch (Exception $e) {
         die('Erreur');
 }
-var_dump($_SESSION);
+$totalPanier = 0;
 ?>
-
-<h1> Votre Panier</h1>
-<?php 
-	$totalPanier = 0;
-	foreach ($_SESSION['basket'] as $key => $value) {
-		$productQuery = $pdo->prepare('SELECT image, name, description, price  FROM produits WHERE id = :productid ');
-		$productQuery->execute([
-			':productid' => $value['product']
-		]);
-		$product = $productQuery->fetchAll();
-		$totalPanier += $value['qty'] *  $product[0]['price'] ; 		
-		if ( $product) {
-			?>
-			<div class="one-product" id="product-<?=$product[0]['id']; ?>">
-				<h3><?=$product[0]['name'];?></h3>
-				<img src="<?= $product[0]['image'];?>" alt="<?=$product[0]['name'];?>"/>
-				<p><?= $product[0]['description'];?></p>
-				<p><?= $product[0]['price'] . " €";?></p>
-				<p><?= $value['qty'];?></p>
-				<p><?= $value['qty'] *  $product[0]['price'] ." €";?></p>
-			</div>	
-			<?php	
-		}
-	}
+<div class="panier clearfix">
+	<h1> Récapitulatif de votre Panier</h1>
+<?php
+	if (isset($_SESSION['basket'])) {	
+		foreach ($_SESSION['basket'] as $key => $value) {
+			$productQuery = $pdo->prepare('SELECT image, name, description, price  FROM produits WHERE id = :productid ');
+			$productQuery->execute([
+				':productid' => $value['product']
+			]);
+			$product = $productQuery->fetchAll();
+			$totalPanier += $value['qty'] *  $product[0]['price'] ; 		
+			if ( $product) {
+				?>
+				<article>			
+					<div class="one-product" id="product-<?=$value['product']; ?>">
+						<h3><?=$product[0]['name'];?></h3>
+						<img src="<?= $product[0]['image'];?>" alt="<?=$product[0]['name'];?>"/>
+						<aside>
+							<h3><?= $product[0]['description'];?></h3>	
+							<ul class="detail">
+								<li> Prix  : <?= $product[0]['price'] . " €";?></li>
+								<li>
+									<input type='button' value='-' class='subarticle' field='quantity' />
+	    							<input type='text' name='quantity' value=<?= $value['qty'];?> class='qty' />
+	    							<input type='button' value='+' class='addarticle' field='quantity' />
+								 </li>
+								<li> Total : <?= $value['qty'] *  $product[0]['price'] ." €";?></li>
+							</ul>
+						</aside>
+					</div>
+				</article>	
+				<?php	
+			}
+		}		
+	} else {
+		echo "Votre panier est vide";
+	} 
 	?>
-		<div id="totalpannier">
-			<p> Total du Pannier : <?= $totalPanier ." €";?></p> 
-		</div>
+</div>
+<div id="totalpanier">
+	<p> Total du Pannier : <?= $totalPanier ." €";?></p> 
+</div>
+<div id="connectpanier">
 	<?php 
 	if (!isset($_SESSION['auth'])) {
 		?>
-		<a href="connexion.php" title="Se connectere">Connexion</a>
+		<a href="connexion.php" title="Se connecter">Connexion</a>
 		<?php			
 	} else {
 		?>
@@ -46,6 +61,7 @@ var_dump($_SESSION);
 		<?php
 	}
 ?>
+</div>
 
 
 <!-- pied de page du site -->

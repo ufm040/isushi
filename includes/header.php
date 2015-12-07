@@ -25,8 +25,9 @@ echo "</pre>" ;
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:300">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:600">	
 	<link rel="stylesheet" href="css/reset.css">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/style-panier.css">
 	<link rel="stylesheet" href="css/style_arthur.css">
+	<link rel="stylesheet" href="css/style.css">	
 </head>
 <body>
 

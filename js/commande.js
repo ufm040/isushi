@@ -19,3 +19,20 @@ function addCommande(e){
 }
 
 $("#commande").on("click", addCommande);
+
+function subArticle(e){
+	e.preventDefault();
+	console.log("moins");
+	$elem = $(this).prev(".myform").children(".qty");
+
+}
+
+function addArticle(e){
+	e.preventDefault();
+	console.log("plus");	
+}
+
+
+$(".subarticle").on("click",subArticle);
+
+$(".addarticle").on("click",addArticle);
