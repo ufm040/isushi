@@ -15,26 +15,26 @@ $donnees = $getimage->fetchall();
 
 foreach ($donnees as $key => $value) {
 	?>
-	<div id="menu-mosaic">
+	<div class="menu-mosaic" class="produits'" >
 		<span class="imgSize">
 			<img src="<?php echo $donnees[$key]['image'];?>" class="adapt-image"/>
 		</span>
-		<div id="selection">
-			<form id='myform' method='POST' action='#'>
-    			<input type='button' value='-' class='qtyminus' field='quantity' />
+		<div class="count-container">
+			
+			<form class='myform'  method='POST' action='#'>
+    			<input type='button' value='-' class='qtyminus' data-field='quantity' />
     			<input type='text' name='quantity' value='0' class='qty' />
-    			<input type='button' value='+' class='qtyplus' field='quantity' />
+    			<input type='button' value='+' class='qtyplus' data-field='quantity' />
 			</form>
-			<button type="submit" value="text" id="basketAdd">acheter !</button>
+			<button type="submit" value="text" class="basketAdd">acheter !</button>
 		
 		</div>
-		<div id="menuText">
+		<div class="menuText">
 		<h3><?php echo $donnees[$key]['name'] . " " .$donnees [$key]['price'] . "€";?></h3>
 		<p><?php echo $donnees [$key]['description'];?></p>
 		</div>
 	</div>
-
 	<?php
-}	
+}
 	
 ?>
