@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 03 Décembre 2015 à 14:30
+-- Généré le :  Lun 07 Décembre 2015 à 10:17
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -34,17 +34,18 @@ CREATE TABLE `clients` (
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created` datetime NOT NULL
+  `created` datetime NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Contenu de la table `clients`
 --
 
-INSERT INTO `clients` (`id`, `name`, `firstname`, `email`, `password`, `phone`, `address`, `created`) VALUES
-(1, 'Martinet', 'Philippe', 'philippe.agm@gmail.com', 'phil', '0699999999', '10, rue des Ecluses, 75010 Paris', '2015-12-02 12:12:21'),
-(2, 'Rambutot', 'Arthur', 'tutur.sollet@laposte.net', 'tutur', '0699999998', '9, rue des Ecluses, 75010 Paris', '2015-12-01 11:00:21'),
-(3, 'Durand', 'Catherine', 'ufm040@free.fr', 'cath', '0699999997', '11, rue des Ecluses, 75010 Paris', '2015-11-02 12:12:21');
+INSERT INTO `clients` (`id`, `name`, `firstname`, `email`, `password`, `phone`, `address`, `created`, `token`) VALUES
+(1, 'Martinet', 'Philippe', 'philippe.agm@gmail.com', 'phil', '0699999999', '10, rue des Ecluses, 75010 Paris', '2015-12-02 12:12:21', ''),
+(2, 'Rambutot', 'Arthur', 'tutur.sollet@laposte.net', 'tutur', '0699999998', '9, rue des Ecluses, 75010 Paris', '2015-12-01 11:00:21', ''),
+(3, 'Durand', 'Catherine', 'ufm040@free.fr', 'cath', '0699999997', '11, rue des Ecluses, 75010 Paris', '2015-11-02 12:12:21', '');
 
 -- --------------------------------------------------------
 
@@ -225,7 +226,7 @@ ALTER TABLE `produits`
 -- AUTO_INCREMENT pour la table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT pour la table `commandes`
 --
