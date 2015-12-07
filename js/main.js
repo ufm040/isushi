@@ -24,17 +24,13 @@ init();
 
 function addBasket(e){
 	e.preventDefault();
-	console.log(this);
-	$t = this ;
-	console.log($t);
 
 	$product = this.dataset.product;
-	console.log($product);
 	$elem = $(this).prev(".myform").children(".qty");
-	console.log($elem);
 	$qty = $elem.val();
-	console.log($qty);
 	//$price = $elem.children("#price").val();
+	console.log($qty);
+	console.log($product);
 	$.ajax({
 		"url": "libs/addproduct.php",
 		"type": "POST",
