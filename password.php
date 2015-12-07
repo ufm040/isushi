@@ -27,8 +27,13 @@ if ( $_POST ) {
 			if ( $users ) {
 				$id = $users[0]['id'];
 				$firstname = $users[0]['firstname'];
-				$password = $users[0]['password'];
-				$user = $users[0]['email'];
+				// $password = $users[0]['password'];
+				$token = password_hash(uniqid(), PASSWORD_DEFAULT);
+				$pdo->exec(sprintf(
+					'UPDATE clients SET token = "%1$s" WHERE id = %2$u;',
+					$token,
+					$id
+				));
 
 			} else $error = "L'email n'est pas utilisé.";
 
@@ -66,7 +71,8 @@ if ( $_POST ) {
 		</fieldset>
 
 		<?php if ( $id ) { ?>
-		<a href="newpassword.php?id=<?=$id?>&user=<?=$user?>&firstname=<?=$firstname?>">Changer le mot de passe</a>
+		<a href="newpassword.php?id=<?=$id?>&firstname=<?=$firstname?>&token=<?=$token?>">Changer le mot de passe</a>
+		<!-- <a href="newpassword.php?id=<?=$id?>&user=<?=$user?>&firstname=<?=$firstname?>&token=<?=$token?>">Changer le mot de passe</a> -->
 		<?php } ?>
 	</form>
 

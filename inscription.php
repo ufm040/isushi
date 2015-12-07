@@ -27,27 +27,32 @@ if ( $_POST ) {
 			
 			if ($allFields) {
 
-				$pdo = include('data/pdo.php');
-				$address = $_POST['new_client']['number_street'] . ", " . $_POST['new_client']['street'] . ", " . $_POST['new_client']['zip'] . " " . $_POST['new_client']['city'];
-
-				$statement = $pdo->prepare('INSERT INTO clients (`name`, `firstname`, `email`, `password`, `phone`, `address`, `created`) 
-											VALUES (:name, :firstname, :email, :password, :phone, :address, NOW()) ;');
-				$statement->execute([
-					':name' => $_POST['new_client']['name'],
-					':firstname' => $_POST['new_client']['firstname'],
-					':email' => $_POST['new_client']['email'],
-					':password' => $_POST['new_client']['password'],
-					':phone' => $_POST['new_client']['phone'],
-					':address' => $address,
-				]);
-
+				// if ( preg_match ( " /^[^\W][a-zA-Z0-9_-]+(\.[a-zA-Z0-9_]+)*\@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)*\.[a-zA-Z]{2,4}$/ " , $_POST['new_client']['email'] ) ){
+				// die("L'adresse eMail est valide");
+				
 				if ( $_POST['new_client']['password'] === $_POST['new_client']['password_conf'] ) {
 
-				$statement = $pdo->prepare('SELECT * FROM clients WHERE email = ? ;');
-				$statement->execute([$_POST['new_client']['email']]);
-				$users = $statement->fetchAll();
+					$pdo = include('data/pdo.php');
+					$address = $_POST['new_client']['number_street'] . ", " . $_POST['new_client']['street'] . ", " . $_POST['new_client']['zip'] . " " . $_POST['new_client']['city'];
+
+					$statement = $pdo->prepare('INSERT INTO clients (`name`, `firstname`, `email`, `password`, `phone`, `address`, `created`) 
+												VALUES (:name, :firstname, :email, :password, :phone, :address, NOW()) ;');
+					$statement->execute([
+						':name' => $_POST['new_client']['name'],
+						':firstname' => $_POST['new_client']['firstname'],
+						':email' => $_POST['new_client']['email'],
+						':password' => password_hash($_POST['new_client']['password'], PASSWORD_DEFAULT),
+						// ':password' => $_POST['new_client']['password'],
+						':phone' => $_POST['new_client']['phone'],
+						':address' => $address,
+					]);
+
+
+					$statement = $pdo->prepare('SELECT * FROM clients WHERE email = ? ;');
+					$statement->execute([$_POST['new_client']['email']]);
+					$users = $statement->fetchAll();
 		
-				// if ( count($users) ) {
+					// if ( count($users) ) {
 					
 					//session_start();
 					$_SESSION['auth'] = $users[0];
@@ -56,7 +61,7 @@ if ( $_POST ) {
 				} else $error = "Les mots de passes ne sont pas identiques.";
 
 				// } else $error = "Email ou mot de passe erroné.";
-
+			// } else die("le mail n'est pas valide");
 			} else $error = "Tous les champs doivent être remplis.";
 
 		} else $error = "Le formulaire n'a pas été correctement validé.";

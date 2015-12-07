@@ -14,24 +14,27 @@ if ( $_POST ) {
 
 	if ( !empty($_POST['action']['newpassword']) ) {
 		
-		if (!empty($_POST['action']['id']) && !empty($_POST['user']['newpassword']) && !empty($_POST['user']['password_conf']) ) {
+		if (!empty($_POST['action']['token']) && !empty($_POST['action']['id']) && !empty($_POST['user']['newpassword']) && !empty($_POST['user']['password_conf']) ) {
 			
 			if ( $_POST['user']['newpassword'] === $_POST['user']['password_conf'] ) {
 
 				$pdo = include('data/pdo.php');
-				$userQuery = $pdo->prepare('UPDATE clients SET password = ? WHERE id = ?;');
+				$userQuery = $pdo->prepare('UPDATE clients SET password = ?, token ="" WHERE id = ? AND token = ?;');
 				$userQuery->execute([
-					$_POST['user']['newpassword'],
+					password_hash($_POST['user']['newpassword'], PASSWORD_DEFAULT),
+					// $_POST['user']['newpassword'],
 					$_POST['action']['id'],
+					$_POST['action']['token'],
 				]);
 
 				$msg = "Votre mot de passe a bien été modifié !";
-				echo $msg;
+				//echo $msg;
 
 
 				session_start();
+
 				$_SESSION['auth'] = $_POST['user'];
-				var_dump($_SESSION['auth']);
+				// var_dump($_SESSION['auth']);
 				//die(header('Location: ./' . ( !empty($_POST['action']['next']) ? $_POST['action']['next'] : '' ) ));
 
 			} else $error = "Les mots de passes ne sont pas identiques.";
@@ -76,26 +79,26 @@ if ( $_POST ) {
 
 		</fieldset>
 		<fieldset>
-			<!-- <input
+			<input
 				type="hidden"
 				name="action[token]"
 				value="<?=!empty($_GET['token']) ? $_GET['token'] : ( !empty($_POST['action']['token']) ? $_POST['action']['token'] : '' )?>"
-			/> -->
+			/>
 			<input
 				type="hidden"
 				name="action[id]"
 				value="<?=!empty($_GET['id']) ? $_GET['id'] : ( !empty($_POST['action']['id']) ? $_POST['action']['id'] : '' )?>"
 			/>
 
-			<input
+			<!-- <input
 				type="text"
 				name="action[user]"
-				value="<?=!empty($_GET['user']) ? $_GET['user'] : ( !empty($_POST['action']['user']) ? $_POST['action']['user'] : '' )?>"
-			/>
+				value="<?//=!empty($_GET['user']) ? $_GET['user'] : ( !empty($_POST['action']['user']) ? $_POST['action']['user'] : '' )?>"
+			/> -->
 
 			<input
-				type="text"
-				name="action[firstname]"
+				type="hidden"
+				name="user[firstname]"
 				value="<?=!empty($_GET['firstname']) ? $_GET['firstname'] : ( !empty($_POST['action']['firstname']) ? $_POST['action']['firstname'] : '' )?>"
 			/>
 
