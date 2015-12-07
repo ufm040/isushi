@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 07 Décembre 2015 à 10:17
+-- Généré le :  Lun 07 Décembre 2015 à 11:55
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -43,9 +43,10 @@ CREATE TABLE `clients` (
 --
 
 INSERT INTO `clients` (`id`, `name`, `firstname`, `email`, `password`, `phone`, `address`, `created`, `token`) VALUES
-(1, 'Martinet', 'Philippe', 'philippe.agm@gmail.com', 'phil', '0699999999', '10, rue des Ecluses, 75010 Paris', '2015-12-02 12:12:21', ''),
-(2, 'Rambutot', 'Arthur', 'tutur.sollet@laposte.net', 'tutur', '0699999998', '9, rue des Ecluses, 75010 Paris', '2015-12-01 11:00:21', ''),
-(3, 'Durand', 'Catherine', 'ufm040@free.fr', 'cath', '0699999997', '11, rue des Ecluses, 75010 Paris', '2015-11-02 12:12:21', '');
+(1, 'Martinet', 'Philippe', 'philippe.agm@gmail.com', '$2y$10$NUN3AEBECp9mVbmeCpXUIe9f9dtheJ3rmMapcba96o0dPpS93P6V.', '0699999999', '10, rue des Ecluses, 75010 Paris', '2015-12-02 12:12:21', ''),
+(2, 'Rambutot', 'Arthur', 'tutur.sollet@laposte.net', '$2y$10$Tgvy3av8BweQXzoSozhRkeOqMHr8.naHI9/0g8aEPWQe4cYIYYlxC', '0699999998', '9, rue des Ecluses, 75010 Paris', '2015-12-01 11:00:21', ''),
+(3, 'Durand', 'Catherine', 'ufm040@free.fr', '$2y$10$DYkc3IhBpke4SNH3WJJOZuHwiBruply.fGIgNUgFf3aE4IycaonUm', '0699999997', '11, rue des Ecluses, 75010 Paris', '2015-11-02 12:12:21', ''),
+(36, 'Ducas', 'Edmond', 'e.ducas@mail.fr', '$2y$10$rOcIJNZUOfjYfWxom8fWp.TudDW9X7IIyUwNZGF73GPG/.Oiupltq', '0102030405', '10, rue des écluses, 75010 Paris', '2015-12-07 11:45:49', '');
 
 -- --------------------------------------------------------
 
@@ -226,7 +227,7 @@ ALTER TABLE `produits`
 -- AUTO_INCREMENT pour la table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 --
 -- AUTO_INCREMENT pour la table `commandes`
 --
