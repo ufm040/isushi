@@ -1,36 +1,30 @@
-jQuery(document).ready(function(){
-    // This button will increment the value
-    $('.qtyplus').click(function(e){
-        // Stop acting like a button
+
+    $('.qtyplus').click(function (e) {
         e.preventDefault();
-        // Get the field name
-        fieldName = $(this).attr('field');
-        // Get its current value
-        var currentVal = parseInt($('input[name='+fieldName+']').val());
-        // If is not undefined
+        console.log("coucou");
+        var $container = $(this).closest('.myform');
+        var $field = $container.find('input[name=' + $(this).data('field') + ']');
+        var currentVal = parseInt($field.val(), 10);
         if (!isNaN(currentVal)) {
-            // Increment
-            $('input[name='+fieldName+']').val(currentVal + 1);
+            $field.val(currentVal + 1);
         } else {
-            // Otherwise put a 0 there
-            $('input[name='+fieldName+']').val(0);
+            $field.val(0);
         }
+        console.log($container);
+        console.log($field);
+        console.log(currentVal);
     });
-    // This button will decrement the value till 0
-    $(".qtyminus").click(function(e) {
-        // Stop acting like a button
+
+    $(".qtyminus").click(function (e) {
         e.preventDefault();
-        // Get the field name
-        fieldName = $(this).attr('field');
-        // Get its current value
-        var currentVal = parseInt($('input[name='+fieldName+']').val());
-        // If it isn't undefined or its greater than 0
-        if (!isNaN(currentVal) && currentVal > 0) {
-            // Decrement one
-            $('input[name='+fieldName+']').val(currentVal - 1);
+        var $container = $(this).closest('.myform');
+        var $field = $container.find('input[name=' + $(this).data('field') + ']');
+        var currentVal = parseInt($field.val(), 10);
+        if (!isNaN(currentVal) && !currentVal == 0) {
+            $field.val(currentVal - 1);
         } else {
-            // Otherwise put a 0 there
-            $('input[name='+fieldName+']').val(0);
+            $field.val(0);
         }
     });
-});
+
+    console.log("coucou");
