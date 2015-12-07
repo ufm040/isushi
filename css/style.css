@@ -1,52 +1,52 @@
 body {
-	font-family: 'Muli', sans-serif;
-	font-size: 92%;		
+  font-family: 'Muli', sans-serif;
+  font-size: 92%;   
 }
 
 
 h1 {
-	font-size: 3em;
+  font-size: 3em;
 }
 a {
-	text-decoration: none;
-	color: #444;
+  text-decoration: none;
+  color: #444;
 }
 .clearfix::after{
-	clear: both;
-	display: block;
-	content: "";
+  clear: both;
+  display: block;
+  content: "";
 }
 
 .container {
-	width: 100%;
-	margin: auto;
-	max-width: 1220px;
-	background-color: #5B7A2B;
+  width: 100%;
+  margin: auto;
+  max-width: 1220px;
+  background-color: #5B7A2B;
 }
 
 .page-header {
-	height: 80px;
-	background-color: #FFF;
+  height: 80px;
+  background-color: #FFF;
 }
 
 header h1 {
-	float: left;
-	padding-left: 10px;
+  float: left;
+  padding-left: 10px;
 }
 #large-menu{
-	display: none;
+  display: none;
 }
 .isushi-nav ul {
-	float: right;	
+  float: right; 
 }
 .isushi-nav li {
-	float: left;	
+  float: left;  
 }
 
 #fix-menu a {
-	color: #444;
-	display: block;
-	margin-right: 10px;
+  color: #444;
+  display: block;
+  margin-right: 10px;
 }
 #fix-menu sup{
     background-color: #E7490F;
@@ -60,41 +60,41 @@ header h1 {
 }
 
 .isushi-nav a {
-	display: block;
-	padding: 25px 0;	
+  display: block;
+  padding: 25px 0;  
 }
 
 .isushi-nav a i {
-	float: right;
-	margin-right: 25px;
+  float: right;
+  margin-right: 25px;
 }
 
 
 #nav-bottom {
-	text-align: left;
-	background-color: #E95A0D;
-	padding: 5px 20px;
-	text-transform: uppercase;
+  text-align: left;
+  background-color: #E95A0D;
+  padding: 5px 20px;
+  text-transform: uppercase;
 }
 #nav-bottom li {
-	padding: 20px 20px 20px 0;
-	border-bottom: 1px solid #CCC;
+  padding: 20px 20px 20px 0;
+  border-bottom: 1px solid #CCC;
 }
 .fa-chevron-right{
-	float: right;
+  float: right;
 }
 
 .products {
-	color: #fff;
-	padding: 20px;
+  color: #fff;
+  padding: 20px;
 }
 
 h2{
-	font-size: 2em;
+  font-size: 2em;
 }
 #userhello {
-	float: right;
-	font-size: 0.6em;
+  float: right;
+  font-size: 0.6em;
 }
 
 #tease {
@@ -102,75 +102,78 @@ h2{
 }
 
 #tease p{
-	float: left;
-	width: 60%;
+  float: left;
+  width: 60%;
     margin: 5%;
-    font-size: 1.5em;	
+    font-size: 1.5em; 
 }
 #tease img {
-	float: left;
-	margin:2% auto;
-	width: 22%;
+  float: left;
+  margin:2% auto;
+  width: 22%;
 }
 
 #menu-choice{
-	display: none;
+  display: none;
+}
+#fullcarte {
+  display: block;
 }
 /* page footer */
 .page-footer {
-	background-color: #282828;
-	padding: 32px 25px;
-	text-align: center;
-	color: #fff;
+  background-color: #282828;
+  padding: 32px 25px;
+  text-align: center;
+  color: #fff;
 }
 
 @media screen and (min-width: 960px){
-	/* Changement de header/menu */
+  /* Changement de header/menu */
 
-	.container{
-		background-color:#E7490F;
-	}
-	header h1 {
-		float: left;
-		padding-left: 20px;
-	}
+  .container{
+    background-color:#E7490F;
+  }
+  header h1 {
+    float: left;
+    padding-left: 20px;
+  }
 
-	.isushi-nav {		
-		display: block;
-		position: static;		
-	}
+  .isushi-nav {   
+    display: block;
+    position: static;   
+  }
 
-	#large-menu {
-		display: block;
-		float: left;
-    	padding-left: 15%;
-	}
-	#nav-bottom{
-		display: none;
-	}
-	#fix-menu {
-		width: 30%;
-		float: right;	
-	}
+  #large-menu {
+    display: block;
+    float: left;
+      padding-left: 15%;
+  }
+  #nav-bottom{
+    display: none;
+  }
+  #fix-menu {
+    width: 30%;
+    float: right; 
+  }
 
-	.isushi-nav a {
-		border-bottom: none;
-		margin: 0 10px;
-		font-size: 1.2em;
-		font-weight: 600;
-	}
+  .isushi-nav a {
+    border-bottom: none;
+    margin: 0 10px;
+    font-size: 1.2em;
+    font-weight: 600;
+  }
 
-	.isushi-nav li {
-		float: left;
-	}	
-	#tease {
-		width: 80%;
-		margin: auto;	
-	}
-	#tease p{
-    	font-size: 1.5em;
-	}
-	#menu-choice{
-		display: block;
-	}
+  .isushi-nav li {
+    float: left;
+  } 
+  #tease {
+    width: 80%;
+    margin: auto; 
+  }
+  #tease p{
+      font-size: 1.5em;
+  }
+  #menu-choice{
+    display: block;
+  }  
 }
