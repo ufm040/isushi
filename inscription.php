@@ -9,6 +9,9 @@ $tab_error = [];
 
 if ( $_POST ) {
 
+
+	if (empty($_POST['action']['connexion'])) { // test en premier si le bouton "connexion" n'a pas été cliqué
+
 	 $keys = ['name', 'firstname', 'email', 'password', 'password_conf', 'phone', 'number_street', 'street', 'zip', 'city'];
 	    foreach ( $keys as $key ) {
 	        if ( empty($_POST['new_client'][$key]) || !trim($_POST['new_client'][$key]) ) {  // trim() supprime les espaces avt et après ds une chaîne
@@ -19,9 +22,6 @@ if ( $_POST ) {
 	            // print_r($tab_error);
 	        }
 	   } 
-
-	if (empty($_POST['action']['connexion'])) { // test en premier si le bouton "connexion" n'a pas été cliqué
-
 
 		if ( !empty($_POST['action']['registred'])) {
 			

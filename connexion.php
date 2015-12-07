@@ -5,47 +5,47 @@ $error = '';
 // print_r($panierC);  // pour test sur la variable session
 // die();
 
-$tab_error = [];
+$tab_errorC = [];
 
 if ( $_POST ) {
 
-if (empty($_POST['action']['registred'])) { // test en premier si le bouton "inscription" n'a pas été cliqué
+	if (empty($_POST['action']['registred'])) { // test en premier si le bouton "inscription" n'a pas été cliqué
 
-	$keys = ['email', 'password'];
-	    foreach ( $keys as $key ) {
-	        if ( empty($_POST['auth'][$key]) || !trim($_POST['auth'][$key]) ) {  // trim() supprime les espaces avt et après ds une chaîne
-	                                                             // ici, gère le fait que l'utilisateur est mis des espaces uniquement
-	            // si le champ est vide, on crée l'index correspondant à
-	            // ce champ dans le tableau $tab_error, de manière à le réutiliser plus bas.
-	            $tab_error[$key] = "le champ $key est manquant !\n";
-	            // print_r($tab_error);
-	        }
-	   } 
+		$keys = ['email', 'password'];
+		    foreach ( $keys as $key ) {
+		        if ( empty($_POST['auth'][$key]) || !trim($_POST['auth'][$key]) ) {  // trim() supprime les espaces avt et après ds une chaîne
+		                                                             // ici, gère le fait que l'utilisateur est mis des espaces uniquement
+		            // si le champ est vide, on crée l'index correspondant à
+		            // ce champ dans le tableau $tab_errorC, de manière à le réutiliser plus bas.
+		            $tab_errorC[$key] = "le champ $key est manquant !\n";
+		            // print_r($tab_errorC);
+		        }
+		   } 
 
-	if ( !empty($_POST['action']['connexion']) ) {
-		
-		if ( !empty($_POST['auth']['email']) && !empty($_POST['auth']['password']) ) {
+		if ( !empty($_POST['action']['connexion']) ) {
+			
+			if ( !empty($_POST['auth']['email']) && !empty($_POST['auth']['password']) ) {
 
-			$pdo = include('data/pdo.php');
-			$statement = $pdo->prepare('SELECT * FROM clients WHERE email = :email AND password = :password;');
-			$statement->execute([
-				':email' => $_POST['auth']['email'],
-				':password' => $_POST['auth']['password'],
-			]);
-			$users = $statement->fetchAll();
-			if ( count($users) ) {
-				
-				session_start();
-				$_SESSION['auth'] = $users[0];
-				die(header('Location: ./' . ( !empty($_POST['action']['next']) ? $_POST['action']['next'] : '' ) ));
+				$pdo = include('data/pdo.php');
+				$statement = $pdo->prepare('SELECT * FROM clients WHERE email = :email AND password = :password;');
+				$statement->execute([
+					':email' => $_POST['auth']['email'],
+					':password' => $_POST['auth']['password'],
+				]);
+				$users = $statement->fetchAll();
+				if ( count($users) ) {
+					
+					session_start();
+					$_SESSION['auth'] = $users[0];
+					die(header('Location: ./' . ( !empty($_POST['action']['next']) ? $_POST['action']['next'] : '' ) ));
 
-			} else $error = "Email ou mot de passe erroné.";
+				} else $error = "Email ou mot de passe erroné.";
 
-		} else $error = "Tous les champs doivent être remplis.";
+			} else $error = "Tous les champs doivent être remplis.";
 
-	} else $error = "Le formulaire n'a pas été correctement validé.";
+		} else $error = "Le formulaire n'a pas été correctement validé.";
 
-}
+	}
 }
 
 
@@ -79,7 +79,7 @@ if (empty($_POST['action']['registred'])) { // test en premier si le bouton "ins
 				<?php } ?>
 
 					<div class="line-form">
-						<label for="auth[email]" class="<?=!empty($tab_error['email']) ? 'error' : '' ?>">Votre email :</label>
+						<label for="auth[email]" class="<?=!empty($tab_errorC['email']) ? 'error' : '' ?>">Votre email :</label>
 						<input
 							type="text"
 							placeholder="email"
@@ -89,7 +89,7 @@ if (empty($_POST['action']['registred'])) { // test en premier si le bouton "ins
 					</div>
 					
 					<div class="line-form">
-						<label for="auth[password]" class="<?=!empty($tab_error['password']) ? 'error' : '' ?>">Votre mot de passe :</label>
+						<label for="auth[password]" class="<?=!empty($tab_errorC['password']) ? 'error' : '' ?>">Votre mot de passe :</label>
 						<input type="password" placeholder="password" name="auth[password]" />
 					</div>
 
