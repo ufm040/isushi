@@ -35,12 +35,12 @@ function subArticle(e){
 	e.preventDefault();
 	$elem = $(this).next('.qty');
 	$qty =  parseInt($elem.val()) - 1;
-	updateValue($(this),$qty);
+	updateValue($(this),1);
 }
 
 function addArticle(e){
 	e.preventDefault();
-
+	updateValue($(this),0);
 	$elem = $(this).prev('.qty');
 	$qty =  parseInt($elem.val()) + 1;
 
