@@ -25,7 +25,7 @@ foreach ($donnees as $key => $value) {
     			<input type='text' name='quantity' value='0' class='qty' />
     			<input type='button' value='+' class='qtyplus' field='quantity' />
 			</form>
-			<button id="product-<?=$donnees[$key]['id']; ?>" type="submit" value="text" class="basketAdd">acheter !</button>
+			<button data-product="<?=$donnees[$key]['id']; ?>" type="submit" value="text" class="basketAdd">acheter !</button>
 		
 		</div>
 		<div class="menuText">

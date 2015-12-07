@@ -11,7 +11,6 @@
 		foreach($panier as $key => $value) {
 			if ($value['product'] === $_POST['product'] ) {
 				$_SESSION['basket'][$key]['qty'] += $_POST['qty'];
-				$_SESSION['basket'][$key]['price'] += $_POST['price'];
 				$add = 0; 
 			}
 			$productQty += $_SESSION['basket'][$key]['qty'];	

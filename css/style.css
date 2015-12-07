@@ -116,6 +116,9 @@ h2{
 #menu-choice{
   display: none;
 }
+#fullcarte {
+  display: block;
+}
 /* page footer */
 .page-footer {
   background-color: #282828;
@@ -172,5 +175,5 @@ h2{
   }
   #menu-choice{
     display: block;
-  }
+  }  
 }
