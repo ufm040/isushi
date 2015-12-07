@@ -42,8 +42,12 @@ label {
 }
 
 .wrapper {
-	width: 50%;
+	/*width: 50%;*/
 	display: inline-block;
+	width: 400px;
+	margin: auto;
+	padding: 0px 10px 10px 10px;
+	border: 1px dotted #CCC;
 }
 
 .error {
@@ -63,11 +67,4 @@ label::after {
 
 .line-form::before {
 	display: none;
-}
-
-.wrapper {
-	width: 400px;
-	margin: auto;
-	padding: 0px 10px 10px 10px;
-	border: 1px dotted #CCC;
 }
