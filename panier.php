@@ -27,13 +27,13 @@ $totalPanier = 0;
 						<aside>
 							<h3><?= $product[0]['description'];?></h3>	
 							<ul class="detail">
-								<li> Prix  : <?= $product[0]['price'] . " €";?></li>
+								<li> Prix  : <span class="price"><?= $product[0]['price']?></span> €</li>
 								<li>
 									<input type='button' value='-' class='subarticle' field='quantity' />
 	    							<input type='text' name='quantity' value=<?= $value['qty'];?> class='qty' />
 	    							<input type='button' value='+' class='addarticle' field='quantity' />
 								 </li>
-								<li> Total : <?= $value['qty'] *  $product[0]['price'] ." €";?></li>
+								<li> Total : <span class="totalprice"><?= $value['qty'] *  $product[0]['price'] ;?></span> €</li>
 							</ul>
 						</aside>
 					</div>
@@ -47,7 +47,7 @@ $totalPanier = 0;
 	?>
 </div>
 <div id="totalpanier">
-	<p> Total du Pannier : <?= $totalPanier ." €";?></p> 
+	<p> Total du Pannier : <span> <?= $totalPanier?> </span> € </p> 
 </div>
 <div id="connectpanier">
 	<?php 
