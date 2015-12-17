@@ -7,6 +7,7 @@ $error = '';
 
 $tab_error = [];
 
+
 if ( $_POST ) {
 
 if (empty($_POST['action']['registred'])) { // test en premier si le bouton "inscription" n'a pas été cliqué
@@ -68,9 +69,11 @@ if (empty($_POST['action']['registred'])) { // test en premier si le bouton "ins
 	<?php include("includes/header.php"); ?>
 	
 	<div id="wrapper_connexion">
-
+		 
 		<div class="wrapper style-form">
+				
 			
+	
 
 			<form id="form-login" action="connexion.php" method="post">
 				
@@ -111,8 +114,11 @@ if (empty($_POST['action']['registred'])) { // test en premier si le bouton "ins
 					<a href="password.php">Mot de passe oublié</a>
 				
 			</form>
-		</div>
 
+		</div>
+	<div class="facebook">
+	<a href="fblogin.php"> <button class="fb">connection avec FB</button></a>
+	</div>
 		<?php include("inscription.php");?>
 	</div>
 

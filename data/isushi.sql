@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
+-- version 4.1.14
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 07 Décembre 2015 à 11:55
+-- Généré le :  Jeu 17 Décembre 2015 à 10:37
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -14,11 +14,13 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Base de données :  `isushi`
 --
+CREATE DATABASE IF NOT EXISTS `isushi` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+USE `isushi`;
 
 -- --------------------------------------------------------
 
@@ -26,8 +28,8 @@ SET time_zone = "+00:00";
 -- Structure de la table `clients`
 --
 
-CREATE TABLE `clients` (
-  `id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `clients` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(63) COLLATE utf8mb4_unicode_ci NOT NULL,
   `firstname` varchar(63) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(127) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -35,8 +37,10 @@ CREATE TABLE `clients` (
   `phone` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created` datetime NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `emails` (`email`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=38 ;
 
 --
 -- Contenu de la table `clients`
@@ -46,7 +50,8 @@ INSERT INTO `clients` (`id`, `name`, `firstname`, `email`, `password`, `phone`, 
 (1, 'Martinet', 'Philippe', 'philippe.agm@gmail.com', '$2y$10$NUN3AEBECp9mVbmeCpXUIe9f9dtheJ3rmMapcba96o0dPpS93P6V.', '0699999999', '10, rue des Ecluses, 75010 Paris', '2015-12-02 12:12:21', ''),
 (2, 'Rambutot', 'Arthur', 'tutur.sollet@laposte.net', '$2y$10$Tgvy3av8BweQXzoSozhRkeOqMHr8.naHI9/0g8aEPWQe4cYIYYlxC', '0699999998', '9, rue des Ecluses, 75010 Paris', '2015-12-01 11:00:21', ''),
 (3, 'Durand', 'Catherine', 'ufm040@free.fr', '$2y$10$DYkc3IhBpke4SNH3WJJOZuHwiBruply.fGIgNUgFf3aE4IycaonUm', '0699999997', '11, rue des Ecluses, 75010 Paris', '2015-11-02 12:12:21', ''),
-(36, 'Ducas', 'Edmond', 'e.ducas@mail.fr', '$2y$10$rOcIJNZUOfjYfWxom8fWp.TudDW9X7IIyUwNZGF73GPG/.Oiupltq', '0102030405', '10, rue des écluses, 75010 Paris', '2015-12-07 11:45:49', '');
+(36, 'Ducas', 'Edmond', 'e.ducas@mail.fr', '$2y$10$rOcIJNZUOfjYfWxom8fWp.TudDW9X7IIyUwNZGF73GPG/.Oiupltq', '0102030405', '10, rue des écluses, 75010 Paris', '2015-12-07 11:45:49', ''),
+(37, '', '', 'arthur.sollet@gmail.com', '', '', '', '0000-00-00 00:00:00', '');
 
 -- --------------------------------------------------------
 
@@ -54,16 +59,20 @@ INSERT INTO `clients` (`id`, `name`, `firstname`, `email`, `password`, `phone`, 
 -- Structure de la table `commandes`
 --
 
-CREATE TABLE `commandes` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `id_client` int(10) UNSIGNED NOT NULL,
-  `id_produit` int(10) UNSIGNED NOT NULL,
-  `quantity` int(10) UNSIGNED NOT NULL,
-  `total` int(10) UNSIGNED NOT NULL,
-  `id_magasin` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `commandes` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_client` int(10) unsigned NOT NULL,
+  `id_produit` int(10) unsigned NOT NULL,
+  `quantity` int(10) unsigned NOT NULL,
+  `total` int(10) unsigned NOT NULL,
+  `id_magasin` int(10) unsigned NOT NULL,
   `created` datetime NOT NULL,
-  `statut` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `statut` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `client_ids` (`id_client`),
+  KEY `produit_ids` (`id_produit`),
+  KEY `magasin_ids` (`id_magasin`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -71,12 +80,13 @@ CREATE TABLE `commandes` (
 -- Structure de la table `magasins`
 --
 
-CREATE TABLE `magasins` (
-  `id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `magasins` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(63) COLLATE utf8mb4_unicode_ci NOT NULL,
   `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `phone` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=2 ;
 
 --
 -- Contenu de la table `magasins`
@@ -91,11 +101,14 @@ INSERT INTO `magasins` (`id`, `name`, `address`, `phone`) VALUES
 -- Structure de la table `menus`
 --
 
-CREATE TABLE `menus` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `id_produit_menu` int(10) UNSIGNED NOT NULL,
-  `id_produit` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE IF NOT EXISTS `menus` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_produit_menu` int(10) unsigned NOT NULL,
+  `id_produit` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `produit_ids` (`id_produit`) USING BTREE,
+  KEY `produit_menu_ids` (`id_produit_menu`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=15 ;
 
 --
 -- Contenu de la table `menus`
@@ -123,12 +136,15 @@ INSERT INTO `menus` (`id`, `id_produit_menu`, `id_produit`) VALUES
 -- Structure de la table `offres`
 --
 
-CREATE TABLE `offres` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `id_client` int(10) UNSIGNED NOT NULL,
-  `id_menu` int(10) UNSIGNED NOT NULL,
-  `count_cmd` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE IF NOT EXISTS `offres` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_client` int(10) unsigned NOT NULL,
+  `id_menu` int(10) unsigned NOT NULL,
+  `count_cmd` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `client_ids` (`id_client`),
+  KEY `menu_ids` (`id_menu`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -136,14 +152,15 @@ CREATE TABLE `offres` (
 -- Structure de la table `produits`
 --
 
-CREATE TABLE `produits` (
-  `id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `produits` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `price` int(7) UNSIGNED NOT NULL,
-  `is_menu` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `price` int(7) unsigned NOT NULL,
+  `is_menu` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=25 ;
 
 --
 -- Contenu de la table `produits`
@@ -171,88 +188,6 @@ INSERT INTO `produits` (`id`, `name`, `description`, `image`, `price`, `is_menu`
 (23, 'menu Sashimi', 'Soupe, salade, sashimi saumon, riz', 'imgisushi/menu-sashimi.jpg', 14, 0),
 (24, 'menu Nigiri', 'Soupe, salade, nigiri saumon (x2), thon (x2), crevette (x2)', 'imgisushi/menu-nigiri.jpg', 15, 0);
 
---
--- Index pour les tables exportées
---
-
---
--- Index pour la table `clients`
---
-ALTER TABLE `clients`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `emails` (`email`);
-
---
--- Index pour la table `commandes`
---
-ALTER TABLE `commandes`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `client_ids` (`id_client`),
-  ADD KEY `produit_ids` (`id_produit`),
-  ADD KEY `magasin_ids` (`id_magasin`);
-
---
--- Index pour la table `magasins`
---
-ALTER TABLE `magasins`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `menus`
---
-ALTER TABLE `menus`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `produit_ids` (`id_produit`) USING BTREE,
-  ADD KEY `produit_menu_ids` (`id_produit_menu`);
-
---
--- Index pour la table `offres`
---
-ALTER TABLE `offres`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `client_ids` (`id_client`),
-  ADD KEY `menu_ids` (`id_menu`);
-
---
--- Index pour la table `produits`
---
-ALTER TABLE `produits`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT pour les tables exportées
---
-
---
--- AUTO_INCREMENT pour la table `clients`
---
-ALTER TABLE `clients`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
---
--- AUTO_INCREMENT pour la table `commandes`
---
-ALTER TABLE `commandes`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT pour la table `magasins`
---
-ALTER TABLE `magasins`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT pour la table `menus`
---
-ALTER TABLE `menus`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
---
--- AUTO_INCREMENT pour la table `offres`
---
-ALTER TABLE `offres`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT pour la table `produits`
---
-ALTER TABLE `produits`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- Contraintes pour les tables exportées
 --

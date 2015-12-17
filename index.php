@@ -1,5 +1,7 @@
 <!-- page header -->
+
 <?php include('includes/header.php') ; ?>
+
 
 <section class="products">
 	<article>
